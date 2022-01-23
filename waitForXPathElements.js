@@ -43,7 +43,7 @@ function* fibonacciGenerator(len, current = 0, next = 1) {
   yield* fibonacciGenerator(len - 1, next, current + next);
 }
 
-const scalingFactor = fibonacciGenerator()
+const fibonacciSequence = fibonacciGenerator()
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -70,7 +70,7 @@ async function _waitForXPathElement(xpath, endTime) {
   if (elements.length) {
     return elements
   } else {
-    await sleep(baseSampleRateInMilliseconds * scalingFactor.next())
+    await sleep(baseSampleRateInMilliseconds * fibonacciSequence.next())
     if (endTime && endTime <= Date.now()) {
       return NaN
     } else {
@@ -78,3 +78,5 @@ async function _waitForXPathElement(xpath, endTime) {
     }
   }
 }
+
+module.exports = { fibonacciSequence }
