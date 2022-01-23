@@ -2,16 +2,24 @@
 
 [![Test Status](https://github.com/jo-hoe/userscript-toolbox/workflows/test/badge.svg)](https://github.com/jo-hoe/userscript-toolbox/actions?workflow=test)
 
+## Import in UserScript
+
 This script can be added to UserScript via @require. Example:
 
 ```js
+// ==UserScript==
+// @name        New script 
+// @require     https://raw.githubusercontent.com/jo-hoe/userscript-toolbox/main/waitForXPathElements.js
+// @grant       none
+// ==/UserScript==
+
 ...
-@require     https://raw.githubusercontent.com/jo-hoe/userscript-toolbox/main/waitForXPathElements.js
-...
+
 ```
 
-The main function is waitForXPathElement(xpath). It is an async function which can be uses in async function. 
-Here is how you may use it in your script
+## Usage
+
+The main function is waitForXPathElement(xpath). The method waits until element in the DOM matches the xpath. All elements are subsequently returned. It is an async function which can be uses in async function. Here is how you may use it in your script:
 
 ```js
 async function start() {
