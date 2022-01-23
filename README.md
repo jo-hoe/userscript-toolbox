@@ -1,5 +1,7 @@
 # userscript-toolbox
 
+[![Test Status](https://github.com/jo-hoe/userscript-toolbox/workflows/test/badge.svg)](https://github.com/jo-hoe/userscript-toolbox/actions?workflow=test)
+
 ## Tests
 
 ### Run
