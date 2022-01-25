@@ -4,7 +4,7 @@
 
 ## Usage
 
-This script can be added to UserScript via @require. 
+This script can be added to UserScript via @require.
 
 The main function is waitForXPathElement(xpath). The method waits until element in the DOM matches the xpath. All elements are subsequently returned. It is an async function which can be uses in async function. Here is how you may use it in your script:
 
