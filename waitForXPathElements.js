@@ -63,5 +63,3 @@ async function _waitForXPathElement(xpath, endTime) {
     }
   }
 }
-
-export { fibonacciSequence };
