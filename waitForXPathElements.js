@@ -35,7 +35,7 @@ function sleep(ms) {
 }
 
 // returns an array of found elements
-// if the timeout elapsed without any finding NaN is returned
+// if the timeout elapsed without any finding null is returned
 async function waitForXPathElements(xpath, timeoutInMilliseconds = NaN) {
   if (timeoutInMilliseconds) {
     var now = Date.now()
@@ -46,7 +46,7 @@ async function waitForXPathElements(xpath, timeoutInMilliseconds = NaN) {
 }
 
 // returns frist element which is found
-// if the timeout elapsed without any finding NaN is returned
+// if the timeout elapsed without any finding null is returned
 async function waitForXPathElement(xpath, timeoutInMilliseconds = NaN) {
   var result = await waitForXPathElements(xpath, timeoutInMilliseconds)
   
