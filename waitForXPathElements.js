@@ -65,7 +65,7 @@ async function _waitForXPathElement(xpath, endTime) {
   } else {
     await sleep(baseSampleRateInMilliseconds * fibonacciSequence.next())
     if (endTime && endTime <= Date.now()) {
-      return NaN
+      return null
     } else {
       return await _waitForXPathElement(xpath, endTime)
     }
