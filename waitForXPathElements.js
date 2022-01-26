@@ -36,13 +36,21 @@ function sleep(ms) {
 
 // returns an array of found elements
 // if the timeout elapsed without any finding NaN is returned
-async function waitForXPathElement(xpath, timeoutInMilliseconds = NaN) {
+async function waitForXPathElements(xpath, timeoutInMilliseconds = NaN) {
   if (timeoutInMilliseconds) {
     var now = Date.now()
     var end = now + timeoutInMilliseconds
   }
 
   return _waitForXPathElement(xpath, end)
+}
+
+// returns frist element which is found
+// if the timeout elapsed without any finding NaN is returned
+async function waitForXPathElement(xpath, timeoutInMilliseconds = NaN) {
+  var result = waitForXPathElements(xpath, timeoutInMilliseconds)
+  
+  return result[0]
 }
 
 // the function checks the DOM using a sampling rate which scales based on
