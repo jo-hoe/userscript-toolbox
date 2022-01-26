@@ -11,7 +11,7 @@ The main function is waitForXPathElement(xpath). The method waits until element 
 ```js
 // ==UserScript==
 // @name        New script 
-// @require     https://raw.githubusercontent.com/jo-hoe/userscript-toolbox/6a880e9649784f19985a0275ea8247b8fa58728e/waitForXPathElements.js
+// @require     https://raw.githubusercontent.com/jo-hoe/userscript-toolbox/040acae069caaf11ff428d5d7126eaa65c905cfc/waitForXPathElements.js
 // @grant       none
 // ==/UserScript==
 
