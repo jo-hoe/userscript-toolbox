@@ -59,7 +59,7 @@ async function _waitForXPathElement(xpath, endTime) {
     if (endTime && endTime <= Date.now()) {
       return NaN
     } else {
-      return _waitForXPathElement(xpath)
+      return _waitForXPathElement(xpath, endTime)
     }
   }
 }
