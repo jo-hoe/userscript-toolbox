@@ -42,13 +42,13 @@ async function waitForXPathElements(xpath, timeoutInMilliseconds = NaN) {
     var end = now + timeoutInMilliseconds
   }
 
-  return _waitForXPathElement(xpath, end)
+  return await _waitForXPathElement(xpath, end)
 }
 
 // returns frist element which is found
 // if the timeout elapsed without any finding NaN is returned
 async function waitForXPathElement(xpath, timeoutInMilliseconds = NaN) {
-  var result = waitForXPathElements(xpath, timeoutInMilliseconds)
+  var result = await waitForXPathElements(xpath, timeoutInMilliseconds)
   
   return result[0]
 }
