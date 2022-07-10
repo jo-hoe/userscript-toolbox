@@ -11,6 +11,8 @@ function sendKeys(webelement, inputString) {
   }
 }
 
+// you can see the different characters here:
+// https://www.w3.org/2002/09/tests/keys.html
 function createKeyboardEvent(charCode) {
   return new KeyboardEvent('keydown', {
       bubbles: true, cancelable: true, keyCode: charCode

@@ -14,6 +14,7 @@ The main function is waitForXPathElement(xpath). The method waits until element 
 // @require     https://raw.githubusercontent.com/jo-hoe/userscript-toolbox/040acae069caaf11ff428d5d7126eaa65c905cfc/waitForXPathElements.js
 // @grant       none
 // ==/UserScript==
+'use strict';
 
 async function start() {
     var elements = await waitForXPathElement("//div")
