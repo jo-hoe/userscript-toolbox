@@ -5,7 +5,7 @@ function sendKeys(webelement, inputString) {
   // loop over each character
   for (var i = 0; i < inputString.length; i++) {
     // generate a keyboard event
-    keyboardEvent = createKeyboardEvent(inputString.charCodeAt(i))
+    var keyboardEvent = createKeyboardEvent(inputString.charCodeAt(i))
     // send this event to the webelement
     webelement.dispatchEvent(keyboardEvent)
   }
