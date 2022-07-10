@@ -1,6 +1,7 @@
 'use strict';
 
 // offer a way to simulate key inputs with plain javascript
+// note: the created events will have set the "isTrusted" to false
 function sendKeys(webelement, inputString) {
   // loop over each character
   for (var i = 0; i < inputString.length; i++) {
