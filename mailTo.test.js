@@ -23,5 +23,5 @@ test('mailToLink_stringArrayTo_undefined_input', () => {
   let test = require('./mailTo');
   let stringArrayTo = test.__get__('stringArrayTo');
 
-  expect(stringArrayTo(["a@mail.com", " "])).toBe("a@mail.com");
+  expect(stringArrayTo(["a@mail.com", undefined])).toBe("a@mail.com, ");
 });

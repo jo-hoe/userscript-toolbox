@@ -10,12 +10,27 @@
  * @param {Array<string>} bcc
  * @returns {string} mailto link
  */
-function generateMailToLink(to, subject, body, cc, bcc) {
+ function generateMailToLink(to, subject, body, cc, bcc) {
   var result = "mailto:"
 
-  result += stringArrayTo(to)
-  if(subject !== undefined || body !== undefined || cc !== undefined || bcc !== undefined){
-    
+  result += encodeURIComponent(stringArrayTo(to))
+
+  if (subject || body || cc | bcc) {
+    result += "?"
+    var queryparams = []
+    if (subject) {
+      queryparams.push("subject=" + encodeURIComponent(subject))
+    }
+    if (body) {
+      queryparams.push("body=" + encodeURIComponent(body))
+    }
+    if (cc) {
+      queryparams.push("cc=" + encodeURIComponent(stringArrayTo(cc)))
+    }
+    if (body) {
+      queryparams.push("bcc=" + encodeURIComponent(stringArrayTo(bcc)))
+    }
+    result += queryparams.join("&")
   }
 
   return result
@@ -23,37 +38,26 @@ function generateMailToLink(to, subject, body, cc, bcc) {
 
 /**
  * @param mailaddresses is either a string or Array<string> of mail addresses
+ * @returns {string} comma concadinated mail addresses
  */
-function stringArrayTo(mailaddresses) {
+ function stringArrayTo(mailaddresses) {
   // return if only a string is provided
   if (typeof mailaddresses == "string") {
     return mailaddresses
   }
   // return empty if not string provided
-  if (!mailaddresses instanceof Array) {
+  if (!(mailaddresses instanceof Array)) {
     return ""
   }
 
   // concat all input strings
-  var result = ""
-  for (let i = 0; i < mailaddresses.length; i++) {
-    if (isEmptyOrSpaces(mailaddresses[i])){
-      continue
-    }
-    if (i > 0) {
-      result += ", "
-    }
-    result += mailaddresses[i]
-  }
-
-  return result
+  return mailaddresses.join(", ")
 }
-
 
 /**
  * @param {string} str
  * @returns {boolean} true in case string is empty or contains only whitespaces
  */
-function isEmptyOrSpaces(str){
+ function isEmptyOrSpaces(str) {
   return str === null || str.match(/^ *$/) !== null;
 }
