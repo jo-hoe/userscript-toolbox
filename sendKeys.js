@@ -1,8 +1,8 @@
 'use strict';
 
-// offer a way to simulate key inputs with plain javascript
-// note:  the created events will have set the "isTrusted" to false
-//        manually firing a key event does not cause that letter to appear in a focused text input. 
+// offers a way to simulate key inputs with plain javascript
+// note:  The created events will come with "isTrusted" to false.
+//        Manually firing a key event does NOT cause that letters to appear in a text input. 
 //        For security reasons this browser feature prevents scripts
 //        from simulating user actions that interact with the browser itself.  
 function sendKeys(webelement, inputString) {
