@@ -10,7 +10,7 @@
  * @param {Array<string>} bcc
  * @returns {string} mailto link
  */
- function generateMailToLink(to, subject, body, cc, bcc) {
+ export function generateMailToLink(to, subject, body, cc, bcc) {
   var result = "mailto:"
 
   result += encodeURIComponent(stringArrayTo(to))
@@ -40,7 +40,7 @@
  * @param mailaddresses is either a string or Array<string> of mail addresses
  * @returns {string} comma concadinated mail addresses
  */
- function stringArrayTo(mailaddresses) {
+ export function stringArrayTo(mailaddresses) {
   // return if only a string is provided
   if (typeof mailaddresses == "string") {
     return mailaddresses
@@ -58,6 +58,6 @@
  * @param {string} str
  * @returns {boolean} true in case string is empty or contains only whitespaces
  */
- function isEmptyOrSpaces(str) {
+ export function isEmptyOrSpaces(str) {
   return str === null || str.match(/^ *$/) !== null;
 }
