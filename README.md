@@ -43,5 +43,4 @@ Initial installation can be done via this line
 ```bash
 npm install --save-dev 
 npm install babel-plugin-rewire --save-dev
-npm install @babel/preset-env --save-dev
 ```
