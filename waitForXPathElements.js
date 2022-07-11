@@ -49,7 +49,7 @@ async function waitForXPathElements(xpath, timeoutInMilliseconds = NaN) {
 // if the timeout elapsed without any finding null is returned
 async function waitForXPathElement(xpath, timeoutInMilliseconds = NaN) {
   var result = await waitForXPathElements(xpath, timeoutInMilliseconds)
-  if(result){
+  if (result) {
     result[0]
   }
   return result
