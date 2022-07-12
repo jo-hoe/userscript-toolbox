@@ -1,7 +1,14 @@
 'use strict';
 
-function __dummy_for_unittests() {
+/**
+ * To call unittest via npm rewire all tested functions have to be called
+ * in at least one other function. Therefore this dummy function is introduced 
+ * https://github.com/speedskater/babel-plugin-rewire/blob/master/README.md
+ */
+function __rewire() {
   generateMailToLink()
+  isEmptyOrSpaces()
+  stringArrayTo()
 }
 
 /**
