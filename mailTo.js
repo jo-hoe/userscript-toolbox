@@ -1,5 +1,9 @@
 'use strict';
 
+function __dummy_for_unittests(){
+  generateMailToLink();
+}
+
 /**
  * Generates a mailto links
  * https://datatracker.ietf.org/doc/html/rfc2368
@@ -10,7 +14,7 @@
  * @param {Array<string>} bcc
  * @returns {string} mailto link
  */
- function generateMailToLink(to, subject, body, cc, bcc) {
+function generateMailToLink(to, subject, body, cc, bcc) {
   var result = "mailto:"
 
   result += encodeURIComponent(stringArrayTo(to))
@@ -27,7 +31,7 @@
     if (cc) {
       queryparams.push("cc=" + encodeURIComponent(stringArrayTo(cc)))
     }
-    if (body) {
+    if (bcc) {
       queryparams.push("bcc=" + encodeURIComponent(stringArrayTo(bcc)))
     }
     result += queryparams.join("&")
@@ -37,10 +41,18 @@
 }
 
 /**
+ * @param {string} str
+ * @returns {boolean} true in case string is empty or contains only whitespaces
+ */
+function isEmptyOrSpaces(str) {
+  return str === null || str.match(/^ *$/) !== null;
+}
+
+/**
  * @param mailaddresses is either a string or Array<string> of mail addresses
  * @returns {string} comma concadinated mail addresses
  */
- function stringArrayTo(mailaddresses) {
+function stringArrayTo(mailaddresses) {
   // return if only a string is provided
   if (typeof mailaddresses == "string") {
     return mailaddresses
@@ -52,12 +64,4 @@
 
   // concat all input strings
   return mailaddresses.join(", ")
-}
-
-/**
- * @param {string} str
- * @returns {boolean} true in case string is empty or contains only whitespaces
- */
- function isEmptyOrSpaces(str) {
-  return str === null || str.match(/^ *$/) !== null;
 }
