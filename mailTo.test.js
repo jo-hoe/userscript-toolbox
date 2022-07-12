@@ -1,6 +1,6 @@
 describe("tests for generateMailToLink", () => {
   var test = require('./mailTo');
-  var generateMailToLink = test.__get__('generateMailToLink');
+  var generateMailToLink = test.__GetDependency__('generateMailToLink');
 
   it("test positive case", () => {
     expect(generateMailToLink("a@mail.com", "hallo", "how are you")).toBe("mailto:a%40mail.com?subject=hallo&body=how%20are%20you")
@@ -17,7 +17,7 @@ describe("tests for generateMailToLink", () => {
 
 describe("tests for stringArrayTo", () => {
   var test = require('./mailTo');
-  var stringArrayTo = test.__get__('stringArrayTo');
+  var stringArrayTo = test.__GetDependency__('stringArrayTo');
 
   it("test single array element", () => {
     expect(stringArrayTo(["a@mail.com"])).toBe("a@mail.com");
