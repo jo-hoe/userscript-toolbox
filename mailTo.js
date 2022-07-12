@@ -1,7 +1,7 @@
 'use strict';
 
-function __dummy_for_unittests(){
-  generateMailToLink();
+function __dummy_for_unittests() {
+  generateMailToLink()
 }
 
 /**
@@ -19,7 +19,7 @@ function generateMailToLink(to, subject, body, cc, bcc) {
 
   result += encodeURIComponent(stringArrayTo(to))
 
-  if (subject || body || cc | bcc) {
+  if (!isEmptyOrSpaces(subject) || !isEmptyOrSpaces(body) || cc !== undefined | bcc !== undefined) {
     result += "?"
     var queryparams = []
     if (subject) {
@@ -45,7 +45,7 @@ function generateMailToLink(to, subject, body, cc, bcc) {
  * @returns {boolean} true in case string is empty or contains only whitespaces
  */
 function isEmptyOrSpaces(str) {
-  return str === null || str.match(/^ *$/) !== null;
+  return str == null || str.match(/^ *$/) !== null;
 }
 
 /**
