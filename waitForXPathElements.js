@@ -1,9 +1,5 @@
 'use strict';
 
-function __dummy_for_unittests(){
-  toArray();
-}
-
 function toArray(elements) {
   var array = [];
   var element;
