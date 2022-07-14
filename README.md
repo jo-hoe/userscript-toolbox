@@ -11,13 +11,13 @@ The main function is waitForXPathElement(xpath). The method waits until element 
 ```js
 // ==UserScript==
 // @name        New script 
-// @require     https://raw.githubusercontent.com/jo-hoe/userscript-toolbox/040acae069caaf11ff428d5d7126eaa65c905cfc/waitForXPathElements.js
+// @require     https://raw.githubusercontent.com/jo-hoe/userscript-toolbox/3aae241d45da90963fc4bb6fd74079e8941b6fd3/waitForXPathElements.js
 // @grant       none
 // ==/UserScript==
 'use strict';
 
 async function start() {
-    var elements = await waitForXPathElement("//div")
+    var elements = await waitForXPathElements("//div")
     alert(elements.length)
 }
 
