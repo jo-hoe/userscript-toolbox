@@ -24,13 +24,15 @@ function getXPathElements(xpath) {
   return toArray(result)
 }
 
-function* fibonacciGenerator(len, current = 0, next = 1) {
-  if (len === 0 || len === NaN) {
-    return current;
+function* fibonacciGenerator() {
+  var a = 0
+  var b = 1
+  while (true) {
+    yield a;
+    [a, b] = [b, a + b]
   }
-  yield current;
-  yield* fibonacciGenerator(len - 1, next, current + next);
 }
+
 
 const fibonacciSequence = fibonacciGenerator()
 
