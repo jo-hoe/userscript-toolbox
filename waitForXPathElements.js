@@ -34,7 +34,7 @@ function* fibonacciGenerator(len, current = 0, next = 1) {
 
 const fibonacciSequence = fibonacciGenerator()
 
-function sleep(ms) {
+async function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
