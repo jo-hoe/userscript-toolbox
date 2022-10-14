@@ -5,7 +5,7 @@
  * in at least one other function. Therefore this dummy function is introduced 
  * https://github.com/speedskater/babel-plugin-rewire/blob/master/README.md
  */
- function __rewire() {
+function __rewire() {
   beep()
 }
 
@@ -24,34 +24,14 @@ const SoundWaveShape = {
  * @param {int} soundWaveShape describes the shape of the sound wave. 0 = Sine; 1 = Square; 2 = Sawtooth; 3 = Triangle
  * @param {int} durationInMS of the beep in ms
  */
- var beep = (function () {
-     var ctxClass = window.audioContext ||window.AudioContext || window.AudioContext || window.webkitAudioContext
-     var ctx = new ctxClass();
-     return function (duration, type, finishedCallback) {
- 
-         duration = +duration;
- 
-         // Only 0-4 are valid types.
-         type = (type % 5) || 0;
- 
-         if (typeof finishedCallback != "function") {
-             finishedCallback = function () {};
-         }
- 
-         var osc = ctx.createOscillator();
- 
-         osc.type = type;
-         //osc.type = "sine";
- 
-         osc.connect(ctx.destination);
-         if (osc.noteOn) osc.noteOn(0); // old browsers
-         if (osc.start) osc.start(); // new browsers
- 
-         setTimeout(function () {
-             if (osc.noteOff) osc.noteOff(0); // old browsers
-             if (osc.stop) osc.stop(); // new browsers
-             finishedCallback();
-         }, duration);
- 
-     };
- })();;
+const beep = (freq = 520, duration = 200, vol = 100) => {
+  const oscillator = context.createOscillator();
+  const gain = context.createGain();
+  oscillator.connect(gain);
+  oscillator.frequency.value = freq;
+  oscillator.type = "square";
+  gain.connect(context.destination);
+  gain.gain.value = vol * 0.01;
+  oscillator.start(context.currentTime);
+  oscillator.stop(context.currentTime + duration * 0.001);
+}
