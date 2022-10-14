@@ -24,33 +24,34 @@ const SoundWaveShape = {
  * @param {int} soundWaveShape describes the shape of the sound wave. 0 = Sine; 1 = Square; 2 = Sawtooth; 3 = Triangle
  * @param {int} durationInMS of the beep in ms
  */
-function beep(audioCtx, volume = 50, frequencyInHz = 3000, soundWaveShape = SoundWaveShape.Sine, durationInMS = 500) {
-  if (volume < 0 || volume > 100) {
-    throw new RangeError('volume has to be between 0 and 100')
-  }
-  if (frequencyInHz < 40 || frequencyInHz > 6000) {
-    throw new RangeError('frequencyInHz has to be between 0 and 100')
-  }
-  if (soundWaveShape < 0 || soundWaveShape > 3) {
-    throw new RangeError('soundWaveShape has to be between 0 and 100')
-  }
-
-  var oscillator = audioCtx.createOscillator();
-  var gainNode = audioCtx.createGain();
-
-  oscillator.connect(gainNode);
-  gainNode.connect(audioCtx.destination);
-
-  gainNode.gain.value = volume;
-  oscillator.frequency.value = frequencyInHz;
-  oscillator.type = soundWaveShape;
-
-  oscillator.start();
-
-  setTimeout(
-    function () {
-      oscillator.stop();
-    },
-    durationInMS
-  );
-};
+ var beep = (function () {
+     var ctxClass = window.audioContext ||window.AudioContext || window.AudioContext || window.webkitAudioContext
+     var ctx = new ctxClass();
+     return function (duration, type, finishedCallback) {
+ 
+         duration = +duration;
+ 
+         // Only 0-4 are valid types.
+         type = (type % 5) || 0;
+ 
+         if (typeof finishedCallback != "function") {
+             finishedCallback = function () {};
+         }
+ 
+         var osc = ctx.createOscillator();
+ 
+         osc.type = type;
+         //osc.type = "sine";
+ 
+         osc.connect(ctx.destination);
+         if (osc.noteOn) osc.noteOn(0); // old browsers
+         if (osc.start) osc.start(); // new browsers
+ 
+         setTimeout(function () {
+             if (osc.noteOff) osc.noteOff(0); // old browsers
+             if (osc.stop) osc.stop(); // new browsers
+             finishedCallback();
+         }, duration);
+ 
+     };
+ })();;
