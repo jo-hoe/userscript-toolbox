@@ -28,11 +28,11 @@ function beep(audioCtx, volume = 50, frequencyInHz = 3000, soundWaveShape = Soun
   if (volume < 0 || volume > 100) {
     throw new RangeError('volume has to be between 0 and 100')
   }
-  if (volume < 40 || volume > 6000) {
-    throw new RangeError('volume has to be between 0 and 100')
+  if (frequencyInHz < 40 || frequencyInHz > 6000) {
+    throw new RangeError('frequencyInHz has to be between 0 and 100')
   }
-  if (volume < 0 || volume > 3) {
-    throw new RangeError('volume has to be between 0 and 100')
+  if (soundWaveShape < 0 || soundWaveShape > 3) {
+    throw new RangeError('soundWaveShape has to be between 0 and 100')
   }
 
   var oscillator = audioCtx.createOscillator();
